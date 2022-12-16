@@ -1,5 +1,5 @@
 # Copyright (c) OpenMMLab. All rights reserved.
-from mmengine.model.weight_init import normal_init
+from mmengine.model.weight_init import kaiming_init, normal_init
 from torch import Tensor, nn
 
 from mmaction.registry import MODELS
@@ -61,7 +61,7 @@ class X3DHead(BaseHead):
 
     def init_weights(self) -> None:
         """Initiate the parameters from scratch."""
-        normal_init(self.fc1, std=self.init_std)
+        kaiming_init(self.fc1)
         normal_init(self.fc2, std=self.init_std)
 
     def forward(self, x: Tensor, **kwargs) -> Tensor:
