@@ -52,7 +52,6 @@ train_pipeline = [
         num_clips=12,
         out_of_bound_opt='repeat_last'),
     dict(type='DecordDecode'),
-    dict(type='Resize', scale=(-1, 256)),
     dict(type='RandomResizedCrop', area_range=(0.5, 1.0)),
     dict(type='Resize', scale=(224, 224), keep_ratio=False),
     dict(type='Flip', flip_ratio=0.5),
